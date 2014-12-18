@@ -14,5 +14,6 @@ std::string ConfigurationManager::getConfig(std::string var) {
  * Store a value in the configuration database
  */
 void ConfigurationManager::setConfig(std::string var, std::string val) {
+  EloniFrameWork::Database()->Query("CREATE TABLE IF NOT EXISTS configuration(var TEXT PRIMARY KEY, val TEXT)");
   EloniFrameWork::Database()->Query("INSERT OR REPLACE INTO `configuration` (var, val) values ('"+var+"','"+val+"');");
 }
