@@ -27,7 +27,7 @@ class DatabaseManager {
     DatabaseManager();
     int           Open(std::string filename);
     void          Close();
-    std::vector< std::map<std::string,std::string> > Query(std::string, std::string = "drush.db");
+    std::vector< std::map<std::string,std::string> > Query(std::string, std::string = "elonisas.db");
     
 };
 
