@@ -1,0 +1,84 @@
+\hypertarget{DatabaseManager_8cpp}{\section{Database\-Manager.\-cpp}
+\label{DatabaseManager_8cpp}\index{src/\-Database\-Manager.\-cpp@{src/\-Database\-Manager.\-cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{DatabaseManager_8h}{DatabaseManager.h}"}
+00002 
+00003 DatabaseManager::DatabaseManager() \{ \}
+00004 \textcolor{comment}{}
+00005 \textcolor{comment}{/**}
+00006 \textcolor{comment}{ * Open the database}
+00007 \textcolor{comment}{ * }
+00008 \textcolor{comment}{ * @return int}
+00009 \textcolor{comment}{ */}
+\hypertarget{DatabaseManager_8cpp_source_l00010}{}\hyperlink{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}{00010} \textcolor{keywordtype}{int} \hyperlink{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}{DatabaseManager::Open}(std::string filename) \{
+00011   dbFile = \hyperlink{classEloniFramework_a97ba3c1e7eed84a52a572794c6f78eab}{EloniFramework::Path}() + \textcolor{stringliteral}{"/"} + filename;
+00012   
+00013   rc = sqlite3\_open(dbFile.c\_str(), &db);
+00014   
+00015   \textcolor{keywordflow}{if}( rc ) \{
+00016     fprintf(stderr, \textcolor{stringliteral}{"SQL Error: Can't open database: %s\(\backslash\)n"}, sqlite3\_errmsg(db));
+00017     sqlite3\_close(db);
+00018   \}
+00019   
+00020   \textcolor{keywordflow}{return} rc;
+00021 \}
+00022 \textcolor{comment}{}
+00023 \textcolor{comment}{/**}
+00024 \textcolor{comment}{ * Close the database}
+00025 \textcolor{comment}{ */}
+\hypertarget{DatabaseManager_8cpp_source_l00026}{}\hyperlink{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}{00026} \textcolor{keywordtype}{void} \hyperlink{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}{DatabaseManager::Close}() \{
+00027   sqlite3\_close(db);
+00028 \}
+00029 \textcolor{comment}{}
+00030 \textcolor{comment}{/**}
+00031 \textcolor{comment}{ * Queries the database and returns the data in a dictionary style}
+00032 \textcolor{comment}{ * result for easy access (all values are fetched as string)}
+00033 \textcolor{comment}{ * }
+00034 \textcolor{comment}{ * eg: result[0]["username"]}
+00035 \textcolor{comment}{ * }
+00036 \textcolor{comment}{ * return vector<map<string, string>>}
+00037 \textcolor{comment}{ */}
+\hypertarget{DatabaseManager_8cpp_source_l00038}{}\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{00038} std::vector< std::map<std::string,std::string> > \hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{DatabaseManager::Query}(std::string 
+      query, std::string filename) \{
+00039   
+00040   \textcolor{comment}{// CRITICAL FIXME: Make query more secure using regex and whatnot.}
+00041   
+00042   this->\hyperlink{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}{Open}(filename);
+00043   std::vector< std::map<std::string,std::string> > rows;
+00044   
+00045   sqlite3\_stmt *stmt;
+00046   \textcolor{keywordflow}{if} (sqlite3\_prepare\_v2(db, query.c\_str(), -1, &stmt, NULL) == SQLITE\_OK) \{
+00047     std::string test\_string(query);
+00048     boost::algorithm::to\_lower(test\_string);
+00049     \textcolor{keywordtype}{int} cols = sqlite3\_column\_count(stmt);
+00050     \textcolor{keywordflow}{for} (;;) \{
+00051       std::map<std::string,std::string> \_cols;
+00052       \textcolor{keywordtype}{int} rc = sqlite3\_step(stmt);
+00053       
+00054       \textcolor{keywordflow}{if} (rc == SQLITE\_DONE && rc != SQLITE\_ROW)
+00055         \textcolor{keywordflow}{break};
+00056       \textcolor{keywordflow}{if}(test\_string.find(\textcolor{stringliteral}{"select "}) == std::string::npos) \textcolor{comment}{// TODO: Refactor}
+00057         \textcolor{keywordflow}{break};
+00058       
+00059       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} col = 0; col < cols; col++) \{
+00060         
+00061         \textcolor{keywordtype}{int} bytes = sqlite3\_column\_bytes( stmt, col );
+00062         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \textcolor{keyword}{const}* v = sqlite3\_column\_text( stmt, col );
+00063         
+00064         std::string val;
+00065         std::string var = sqlite3\_column\_name( stmt, col );
+00066         val.assign( reinterpret\_cast<char const*>(v), bytes );
+00067         
+00068         \_cols.insert(std::pair<std::string,std::string>(var,val));
+00069       \}
+00070       rows.push\_back(\_cols);
+00071     \}
+00072     sqlite3\_finalize(stmt);
+00073   \}
+00074   this->\hyperlink{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}{Close}();
+00075   \textcolor{keywordflow}{return} rows;
+00076 \}
+00077 
+\end{DoxyCode}

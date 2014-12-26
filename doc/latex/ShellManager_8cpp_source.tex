@@ -1,0 +1,110 @@
+\hypertarget{ShellManager_8cpp}{\section{Shell\-Manager.\-cpp}
+\label{ShellManager_8cpp}\index{src/\-Shell\-Manager.\-cpp@{src/\-Shell\-Manager.\-cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{ShellManager_8h}{ShellManager.h}"}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{/**}
+00004 \textcolor{comment}{ * Constructor}
+00005 \textcolor{comment}{ * }
+00006 \textcolor{comment}{ * Fill the blacklist}
+00007 \textcolor{comment}{ */}
+\hypertarget{ShellManager_8cpp_source_l00008}{}\hyperlink{classShellManager_a04dec3699269bb388648f6017fd9fd15}{00008} \hyperlink{classShellManager_a04dec3699269bb388648f6017fd9fd15}{ShellManager::ShellManager}() \{
+00009   blacklist.push\_back(\textcolor{stringliteral}{"&&"});
+00010   blacklist.push\_back(\textcolor{stringliteral}{"shutdown"});
+00011   blacklist.push\_back(\textcolor{stringliteral}{"restart"});
+00012   blacklist.push\_back(\textcolor{stringliteral}{"sudo"});
+00013   blacklist.push\_back(\textcolor{stringliteral}{"su"});
+00014   blacklist.push\_back(\textcolor{stringliteral}{"service"});
+00015 \}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{/**}
+00018 \textcolor{comment}{ * Attempt to set the user id based on username}
+00019 \textcolor{comment}{ * }
+00020 \textcolor{comment}{ * @return int}
+00021 \textcolor{comment}{ */}
+\hypertarget{ShellManager_8cpp_source_l00022}{}\hyperlink{classShellManager_a9e595c79f89d7c796df213b469384e08}{00022} \textcolor{keywordtype}{int} \hyperlink{classShellManager_a9e595c79f89d7c796df213b469384e08}{ShellManager::setUser}(std::string Username) \{
+00023 
+00024   bufsize = sysconf(\_SC\_GETPW\_R\_SIZE\_MAX);
+00025   \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{int})bufsize == -1)          \textcolor{comment}{/* Value was indeterminate */}
+00026     bufsize = 16384;               \textcolor{comment}{/* Should be more than enough */}
+00027 
+00028   buf = (\textcolor{keywordtype}{char}*)malloc(bufsize);
+00029   \textcolor{keywordflow}{if} (buf == NULL) \{
+00030     perror(\textcolor{stringliteral}{"malloc"});
+00031     \textcolor{keywordflow}{throw} \textcolor{keyword}{this};
+00032   \}
+00033   
+00034   s = getpwnam\_r(Username.c\_str(), &pwd, buf, bufsize, &result);
+00035   \textcolor{keywordflow}{if} (result == NULL) \{
+00036     \textcolor{keywordflow}{if} (s == 0)
+00037       fprintf(stderr, \textcolor{stringliteral}{"User %s not found\(\backslash\)n"}, Username.c\_str());
+00038     \textcolor{keywordflow}{else} \{
+00039       errno = s;
+00040       perror(\textcolor{stringliteral}{"getpwnam\_r"});
+00041     \}
+00042     \textcolor{keywordflow}{throw} \textcolor{keyword}{this};
+00043   \}
+00044   
+00045   \textcolor{keywordflow}{return} \hyperlink{classShellManager_a9e595c79f89d7c796df213b469384e08}{setUser}(pwd.pw\_uid);
+00046 \}
+00047 \textcolor{comment}{}
+00048 \textcolor{comment}{/**}
+00049 \textcolor{comment}{ * Set active userid}
+00050 \textcolor{comment}{ * }
+00051 \textcolor{comment}{ * @return int setresuid}
+00052 \textcolor{comment}{ */}
+\hypertarget{ShellManager_8cpp_source_l00053}{}\hyperlink{classShellManager_a0451c163858db5c51c8976d9bf7dd37d}{00053} \textcolor{keywordtype}{int} \hyperlink{classShellManager_a9e595c79f89d7c796df213b469384e08}{ShellManager::setUser}(\textcolor{keywordtype}{int} UserID) \{
+00054   setresuid(euid, euid, -1);
+00055   \textcolor{keywordflow}{return} setresuid(UserID, UserID, euid);
+00056 \}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{/**}
+00059 \textcolor{comment}{ * Set working directory}
+00060 \textcolor{comment}{ * }
+00061 \textcolor{comment}{ * @return string working directory or application binary}
+00062 \textcolor{comment}{ * directory if fail}
+00063 \textcolor{comment}{ */}
+\hypertarget{ShellManager_8cpp_source_l00064}{}\hyperlink{classShellManager_aeed1b234a317e951f01bdc42a2097d40}{00064} std::string \hyperlink{classShellManager_aeed1b234a317e951f01bdc42a2097d40}{ShellManager::setWorkingDirectory}(std::string dir) \{
+00065   \textcolor{keywordflow}{if} (dir == \textcolor{stringliteral}{""} || !fs::exists(dir)) \{
+00066     dir = \hyperlink{classEloniFramework_a97ba3c1e7eed84a52a572794c6f78eab}{EloniFramework::Path}();
+00067   \}
+00068   
+00069   \textcolor{keywordflow}{if}( fs::exists(dir) )
+00070     this->\_dir = dir;
+00071     
+00072   \textcolor{keywordflow}{return} this->\_dir;
+00073 \}
+00074 \textcolor{comment}{}
+00075 \textcolor{comment}{/**}
+00076 \textcolor{comment}{ * Execute a bash command in working directory}
+00077 \textcolor{comment}{ * }
+00078 \textcolor{comment}{ * @return string bash output}
+00079 \textcolor{comment}{ */}
+\hypertarget{ShellManager_8cpp_source_l00080}{}\hyperlink{classShellManager_a9f40b1296bef8f0d694cafdca29e0e13}{00080} std::string \hyperlink{classShellManager_a9f40b1296bef8f0d694cafdca29e0e13}{ShellManager::Execute}(std::string cmd) \{
+00081   \textcolor{keywordflow}{for}(std::string str : blacklist)
+00082     \textcolor{keywordflow}{if}(cmd.find(str) != std::string::npos)
+00083       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"Running "} + str + \textcolor{stringliteral}{" is not allowed!"};
+00084   
+00085   std::string command = \textcolor{stringliteral}{""};
+00086   \textcolor{keywordflow}{if}( \_dir != \textcolor{stringliteral}{""} )
+00087     command += \textcolor{stringliteral}{"cd "} + \_dir + \textcolor{stringliteral}{" && "};
+00088   
+00089   command += cmd;
+00090   
+00091   FILE* pipe = popen(command.c\_str(), \textcolor{stringliteral}{"r"});
+00092   \textcolor{keywordflow}{if} (!pipe) \textcolor{keywordflow}{return} \textcolor{stringliteral}{"ERROR"};
+00093   \textcolor{keywordtype}{char} buffer[4096];
+00094   std::string result = \textcolor{stringliteral}{""};
+00095   \textcolor{keywordflow}{while}(!feof(pipe)) \{
+00096     \textcolor{keywordflow}{if}(fgets(buffer, 4096, pipe) != NULL)
+00097       result += buffer;
+00098   \}
+00099   pclose(pipe);
+00100   \textcolor{keywordflow}{if}(result[result.length()-1] == \textcolor{charliteral}{'\(\backslash\)n'})
+00101     result.pop\_back();
+00102     
+00103   \textcolor{keywordflow}{return} result;
+00104 \}
+\end{DoxyCode}

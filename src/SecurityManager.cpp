@@ -16,7 +16,7 @@ void SecurityManager::addUser(std::string username, std::string password) {
   if(this->isUser(username))
     return; // user already exists
     
-  EloniFrameWork::Database()->Query("INSERT INTO `users` (`username`,`password`,`email`,`role`) VALUES ('" + username + "','" + password + "','N/A','')");
+  EloniFramework::Database()->Query("INSERT INTO `users` (`username`,`password`,`email`,`role`) VALUES ('" + username + "','" + password + "','N/A','')");
 }
 
 /**
@@ -26,7 +26,7 @@ void SecurityManager::deleteUser(std::string username) {
   if(!this->isUser(username))
     return; // user does not exists
     
-  EloniFrameWork::Database()->Query("DELETE FROM `users` WHERE `username`='"+username+"'");
+  EloniFramework::Database()->Query("DELETE FROM `users` WHERE `username`='"+username+"'");
 }
 
 /**
@@ -36,7 +36,7 @@ void SecurityManager::setUser(std::string username, std::string var, std::string
   if(!this->isUser(username))
     return; // user does not exists
   
-  EloniFrameWork::Database()->Query("UPDATE `users` SET `"+var+"`='"+val+"' WHERE `username`='"+username+"'");
+  EloniFramework::Database()->Query("UPDATE `users` SET `"+var+"`='"+val+"' WHERE `username`='"+username+"'");
 }
 
 /**
@@ -45,7 +45,7 @@ void SecurityManager::setUser(std::string username, std::string var, std::string
  * @return bool
  */
 bool SecurityManager::isUser(std::string username) {
-  auto user = EloniFrameWork::Database()->Query("SELECT `username` FROM `users` WHERE `username`='" + username + "'");
+  auto user = EloniFramework::Database()->Query("SELECT `username` FROM `users` WHERE `username`='" + username + "'");
   if(user.size() > 0)
     return true;
   
@@ -60,7 +60,7 @@ bool SecurityManager::isUser(std::string username) {
 std::vector<std::string> SecurityManager::getUsers() {
   std::vector<std::string> _users;
   
-  auto users = EloniFrameWork::Database()->Query("SELECT `username` FROM `users`");
+  auto users = EloniFramework::Database()->Query("SELECT `username` FROM `users`");
   for (auto user : users) {
     _users.push_back(user["username"]);
   }
@@ -74,7 +74,7 @@ std::vector<std::string> SecurityManager::getUsers() {
  * @return std::map<std::string, int>
  */
 std::map<std::string, int> SecurityManager::getRoles() {
-  auto roles = EloniFrameWork::Database()->Query("SELECT * FROM `roles`");
+  auto roles = EloniFramework::Database()->Query("SELECT * FROM `roles`");
   std::map<std::string, int> _roles;
   
   for (auto role : roles) {
@@ -91,7 +91,7 @@ std::map<std::string, int> SecurityManager::getRoles() {
  */
 bool SecurityManager::hasRole(std::string username, std::string role) {
   if(!this->isUser(username)) return false;
-  auto user = EloniFrameWork::Database()->Query("SELECT * FROM `users` WHERE `username`='" + username + "'")[0];
+  auto user = EloniFramework::Database()->Query("SELECT * FROM `users` WHERE `username`='" + username + "'")[0];
   auto roles = this->getRoles();
   int userRole = atoi(user["role"].c_str());
   int roleToCheck = roles[role];
@@ -107,7 +107,7 @@ void SecurityManager::addRole(std::string username, std::string role){
   if(this->hasRole(username, role))
     return;
   
-  EloniFrameWork::Database()->Query("UPDATE `users` SET `role`=`role`+'" + std::to_string(1 << (this->getRoles()[role])) + "' WHERE `username`='" + username + "'");
+  EloniFramework::Database()->Query("UPDATE `users` SET `role`=`role`+'" + std::to_string(1 << (this->getRoles()[role])) + "' WHERE `username`='" + username + "'");
 }
 
 /**
@@ -118,7 +118,7 @@ void SecurityManager::removeRole(std::string username, std::string role){
   if(!this->hasRole(username, role))
     return;
   
-  EloniFrameWork::Database()->Query("UPDATE `users` SET `role`=`role`-'" + std::to_string(1 << (this->getRoles()[role])) + "' WHERE `username`='" + username + "'");
+  EloniFramework::Database()->Query("UPDATE `users` SET `role`=`role`-'" + std::to_string(1 << (this->getRoles()[role])) + "' WHERE `username`='" + username + "'");
 }
 
 /**
@@ -129,7 +129,7 @@ void SecurityManager::removeRole(std::string username, std::string role){
 bool SecurityManager::Authenticate(std::string username, std::string password) {
   if(!this->isUser(username)) return false;
   
-  auto user = EloniFrameWork::Database()->Query("SELECT * FROM `users` WHERE `username`='" + username + "'")[0];
+  auto user = EloniFramework::Database()->Query("SELECT * FROM `users` WHERE `username`='" + username + "'")[0];
   if(user["password"] == password)
     return true;
   

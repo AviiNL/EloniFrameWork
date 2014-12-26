@@ -1,0 +1,219 @@
+\hypertarget{classSecurityManager}{\section{Security\-Manager Class Reference}
+\label{classSecurityManager}\index{Security\-Manager@{Security\-Manager}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{classSecurityManager_acc4ef8e7685038735e83e73556a5f510}{Encrypt} (std\-::string str)
+\begin{DoxyCompactList}\small\item\em Encrypt a string in D\-G Standard encryption. \end{DoxyCompactList}\item 
+std\-::map$<$ std\-::string, int $>$ \hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{get\-Roles} ()
+\begin{DoxyCompactList}\small\item\em Get all roles from the database. \end{DoxyCompactList}\item 
+bool \hyperlink{classSecurityManager_a2950edc6463999ceca399d47023adddc}{has\-Role} (std\-::string username, std\-::string role)
+\begin{DoxyCompactList}\small\item\em Check if a user has a specific role. \end{DoxyCompactList}\item 
+\hypertarget{classSecurityManager_a9ebf385f13f1893bb36647605677043d}{void \hyperlink{classSecurityManager_a9ebf385f13f1893bb36647605677043d}{add\-Role} (std\-::string username, std\-::string role)}\label{classSecurityManager_a9ebf385f13f1893bb36647605677043d}
+
+\begin{DoxyCompactList}\small\item\em Assign a role to a user. \end{DoxyCompactList}\item 
+\hypertarget{classSecurityManager_a2d5b4923acbe73b0d21c5179deb7f17d}{void \hyperlink{classSecurityManager_a2d5b4923acbe73b0d21c5179deb7f17d}{remove\-Role} (std\-::string username, std\-::string role)}\label{classSecurityManager_a2d5b4923acbe73b0d21c5179deb7f17d}
+
+\begin{DoxyCompactList}\small\item\em Remove a role from a user. \end{DoxyCompactList}\item 
+\hypertarget{classSecurityManager_ac9dc2c5a7667b95d9850ff22fc897213}{void \hyperlink{classSecurityManager_ac9dc2c5a7667b95d9850ff22fc897213}{add\-User} (std\-::string username, std\-::string password)}\label{classSecurityManager_ac9dc2c5a7667b95d9850ff22fc897213}
+
+\begin{DoxyCompactList}\small\item\em Add a user. \end{DoxyCompactList}\item 
+\hypertarget{classSecurityManager_ad616d32abdd366d50dfd01091d6a1f0c}{void \hyperlink{classSecurityManager_ad616d32abdd366d50dfd01091d6a1f0c}{set\-User} (std\-::string username, std\-::string var, std\-::string val)}\label{classSecurityManager_ad616d32abdd366d50dfd01091d6a1f0c}
+
+\begin{DoxyCompactList}\small\item\em Set user properties. \end{DoxyCompactList}\item 
+\hypertarget{classSecurityManager_a61db3bbbb21105c441d2a7bc75fb41bd}{void \hyperlink{classSecurityManager_a61db3bbbb21105c441d2a7bc75fb41bd}{delete\-User} (std\-::string username)}\label{classSecurityManager_a61db3bbbb21105c441d2a7bc75fb41bd}
+
+\begin{DoxyCompactList}\small\item\em Remove a user. \end{DoxyCompactList}\item 
+bool \hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{is\-User} (std\-::string username)
+\begin{DoxyCompactList}\small\item\em Check if a user exists. \end{DoxyCompactList}\item 
+std\-::vector$<$ std\-::string $>$ \hyperlink{classSecurityManager_a05f3c7fc498871277a00dffa092614c1}{get\-Users} ()
+\begin{DoxyCompactList}\small\item\em Get all users from the database. \end{DoxyCompactList}\item 
+bool \hyperlink{classSecurityManager_ace68188567f645c18097b8791db64b41}{Authenticate} (std\-::string username, std\-::string password)
+\begin{DoxyCompactList}\small\item\em Authenticate a uer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{SecurityManager_8h_source_l00023}{23} of file \hyperlink{SecurityManager_8h_source}{Security\-Manager.\-h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSecurityManager_ace68188567f645c18097b8791db64b41}{\index{Security\-Manager@{Security\-Manager}!Authenticate@{Authenticate}}
+\index{Authenticate@{Authenticate}!SecurityManager@{Security\-Manager}}
+\subsubsection[{Authenticate}]{\setlength{\rightskip}{0pt plus 5cm}bool Security\-Manager\-::\-Authenticate (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{username, }
+\item[{std\-::string}]{password}
+\end{DoxyParamCaption}
+)}}\label{classSecurityManager_ace68188567f645c18097b8791db64b41}
+
+
+Authenticate a uer. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{SecurityManager_8cpp_source_l00129}{129} of file \hyperlink{SecurityManager_8cpp_source}{Security\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSecurityManager_ace68188567f645c18097b8791db64b41_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classSecurityManager_acc4ef8e7685038735e83e73556a5f510}{\index{Security\-Manager@{Security\-Manager}!Encrypt@{Encrypt}}
+\index{Encrypt@{Encrypt}!SecurityManager@{Security\-Manager}}
+\subsubsection[{Encrypt}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Security\-Manager\-::\-Encrypt (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{str}
+\end{DoxyParamCaption}
+)}}\label{classSecurityManager_acc4ef8e7685038735e83e73556a5f510}
+
+
+Encrypt a string in D\-G Standard encryption. 
+
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{SecurityManager_8cpp_source_l00008}{8} of file \hyperlink{SecurityManager_8cpp_source}{Security\-Manager.\-cpp}.
+
+\hypertarget{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{\index{Security\-Manager@{Security\-Manager}!get\-Roles@{get\-Roles}}
+\index{get\-Roles@{get\-Roles}!SecurityManager@{Security\-Manager}}
+\subsubsection[{get\-Roles}]{\setlength{\rightskip}{0pt plus 5cm}std\-::map$<$ std\-::string, int $>$ Security\-Manager\-::get\-Roles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSecurityManager_afe3d50265be58ec179058feadd9902a6}
+
+
+Get all roles from the database. 
+
+\begin{DoxyReturn}{Returns}
+std\-::map$<$std\-::string, int$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{SecurityManager_8cpp_source_l00076}{76} of file \hyperlink{SecurityManager_8cpp_source}{Security\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSecurityManager_afe3d50265be58ec179058feadd9902a6_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classSecurityManager_a05f3c7fc498871277a00dffa092614c1}{\index{Security\-Manager@{Security\-Manager}!get\-Users@{get\-Users}}
+\index{get\-Users@{get\-Users}!SecurityManager@{Security\-Manager}}
+\subsubsection[{get\-Users}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::string $>$ Security\-Manager\-::get\-Users (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSecurityManager_a05f3c7fc498871277a00dffa092614c1}
+
+
+Get all users from the database. 
+
+\begin{DoxyReturn}{Returns}
+std\-::vector 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{SecurityManager_8cpp_source_l00060}{60} of file \hyperlink{SecurityManager_8cpp_source}{Security\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSecurityManager_a05f3c7fc498871277a00dffa092614c1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classSecurityManager_a2950edc6463999ceca399d47023adddc}{\index{Security\-Manager@{Security\-Manager}!has\-Role@{has\-Role}}
+\index{has\-Role@{has\-Role}!SecurityManager@{Security\-Manager}}
+\subsubsection[{has\-Role}]{\setlength{\rightskip}{0pt plus 5cm}bool Security\-Manager\-::has\-Role (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{username, }
+\item[{std\-::string}]{role}
+\end{DoxyParamCaption}
+)}}\label{classSecurityManager_a2950edc6463999ceca399d47023adddc}
+
+
+Check if a user has a specific role. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{SecurityManager_8cpp_source_l00092}{92} of file \hyperlink{SecurityManager_8cpp_source}{Security\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSecurityManager_a2950edc6463999ceca399d47023adddc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classSecurityManager_abda859f83e39977a46ce993970a35f92}{\index{Security\-Manager@{Security\-Manager}!is\-User@{is\-User}}
+\index{is\-User@{is\-User}!SecurityManager@{Security\-Manager}}
+\subsubsection[{is\-User}]{\setlength{\rightskip}{0pt plus 5cm}bool Security\-Manager\-::is\-User (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{username}
+\end{DoxyParamCaption}
+)}}\label{classSecurityManager_abda859f83e39977a46ce993970a35f92}
+
+
+Check if a user exists. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{SecurityManager_8cpp_source_l00047}{47} of file \hyperlink{SecurityManager_8cpp_source}{Security\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSecurityManager_abda859f83e39977a46ce993970a35f92_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{SecurityManager_8h}{Security\-Manager.\-h}\item 
+src/Security\-Manager.\-cpp\end{DoxyCompactItemize}

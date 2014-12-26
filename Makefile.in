@@ -127,7 +127,7 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libeloniframework_la_LIBADD =
 am__dirstamp = $(am__leading_dot)dirstamp
-am_libeloniframework_la_OBJECTS = src/EloniFrameWork.lo \
+am_libeloniframework_la_OBJECTS = src/EloniFramework.lo \
 	src/ConfigurationManager.lo src/DatabaseManager.lo \
 	src/SecurityManager.lo src/ShellManager.lo
 libeloniframework_la_OBJECTS = $(am_libeloniframework_la_OBJECTS)
@@ -343,9 +343,9 @@ SRC = $(wildcard $(SRCDIR)/*.cpp)
 #getkey_SOURCES = getkey.c circ_list.c
 AM_CPPFLAGS = -Wl,-rpath -Wl,LIBDIR -Wl,--whole-archive -O3 -fPIC -I/usr/local/include -std=c++11 -I$(top_srcdir)/inc
 lib_LTLIBRARIES = libeloniframework.la
-libeloniframework_la_SOURCES = src/EloniFrameWork.cpp src/ConfigurationManager.cpp src/DatabaseManager.cpp src/SecurityManager.cpp src/ShellManager.cpp
+libeloniframework_la_SOURCES = src/EloniFramework.cpp src/ConfigurationManager.cpp src/DatabaseManager.cpp src/SecurityManager.cpp src/ShellManager.cpp
 libeloniframework_la_CFLAGS = -I$(top_srcdir)/inc
-include_HEADERS = inc/Includes.h inc/EloniFrameWork.h inc/ConfigurationManager.h inc/DatabaseManager.h inc/SecurityManager.h inc/ShellManager.h
+include_HEADERS = inc/Includes.h inc/EloniFramework.h inc/ConfigurationManager.h inc/DatabaseManager.h inc/SecurityManager.h inc/ShellManager.h
 all: all-am
 
 .SUFFIXES:
@@ -425,7 +425,7 @@ src/$(am__dirstamp):
 src/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/$(DEPDIR)
 	@: > src/$(DEPDIR)/$(am__dirstamp)
-src/EloniFrameWork.lo: src/$(am__dirstamp) \
+src/EloniFramework.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
 src/ConfigurationManager.lo: src/$(am__dirstamp) \
 	src/$(DEPDIR)/$(am__dirstamp)
@@ -448,7 +448,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/ConfigurationManager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/DatabaseManager.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/EloniFrameWork.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/EloniFramework.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/SecurityManager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/$(DEPDIR)/ShellManager.Plo@am__quote@
 

@@ -1,0 +1,50 @@
+\hypertarget{ShellManager_8h}{\section{Shell\-Manager.\-h}
+\label{ShellManager_8h}\index{inc/\-Shell\-Manager.\-h@{inc/\-Shell\-Manager.\-h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/**}
+00002 \textcolor{comment}{ * @author Yme-Jan Iedema <yj.iedema@gmail.com>}
+00003 \textcolor{comment}{ * @file ShellManager.h}
+00004 \textcolor{comment}{ * }
+00005 \textcolor{comment}{ * ShellManager}
+00006 \textcolor{comment}{ * }
+00007 \textcolor{comment}{ * This class will allow the usage of 'some' bash commands ran as a }
+00008 \textcolor{comment}{ * specific user.}
+00009 \textcolor{comment}{ */}
+00010 
+00011 \textcolor{preprocessor}{#ifndef DG2\_BASHMANAGER\_H}
+00012 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define DG2\_BASHMANAGER\_H}
+00013 \textcolor{preprocessor}{}
+00014 \textcolor{comment}{// Include all general headers}
+00015 \textcolor{preprocessor}{#include "Includes.h"}
+00016 
+00017 \textcolor{comment}{// Class specific headers}
+00018 \textcolor{preprocessor}{#include <boost/filesystem/operations.hpp>}
+00019 \textcolor{preprocessor}{#include <boost/filesystem/path.hpp>}
+00020 \textcolor{preprocessor}{#include <sys/types.h>}
+00021 \textcolor{preprocessor}{#include <pwd.h>}
+00022 
+00023 \textcolor{keyword}{namespace }fs = boost::filesystem;
+00024 
+\hypertarget{ShellManager_8h_source_l00025}{}\hyperlink{classShellManager}{00025} \textcolor{keyword}{class }\hyperlink{classShellManager}{ShellManager} \{
+00026   \textcolor{keyword}{private}:
+00027     \textcolor{keyword}{struct }passwd             pwd;
+00028     \textcolor{keyword}{struct }passwd             *result;
+00029     \textcolor{keywordtype}{char}                      *buf;
+00030     \textcolor{keywordtype}{size\_t}                    bufsize;
+00031     \textcolor{keywordtype}{int}                       s;
+00032     std::string               \_dir;
+00033     uid\_t                     ruid, euid, saveduid;
+00034     std::vector<std::string>  blacklist;
+00035     
+00036   \textcolor{keyword}{public}:
+00037     \hyperlink{classShellManager_a04dec3699269bb388648f6017fd9fd15}{ShellManager}();
+00038     \textcolor{keywordtype}{int}           \hyperlink{classShellManager_a9e595c79f89d7c796df213b469384e08}{setUser}(std::string Username);
+00039     \textcolor{keywordtype}{int}           \hyperlink{classShellManager_a9e595c79f89d7c796df213b469384e08}{setUser}(\textcolor{keywordtype}{int} UserID);
+00040     std::string   \hyperlink{classShellManager_aeed1b234a317e951f01bdc42a2097d40}{setWorkingDirectory}(std::string dir);
+00041     std::string   \hyperlink{classShellManager_a9f40b1296bef8f0d694cafdca29e0e13}{Execute}(std::string cmd);
+00042 \};
+00043 
+00044 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

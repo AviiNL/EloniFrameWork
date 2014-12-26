@@ -1,0 +1,32 @@
+\hypertarget{ConfigurationManager_8h}{\section{Configuration\-Manager.\-h}
+\label{ConfigurationManager_8h}\index{inc/\-Configuration\-Manager.\-h@{inc/\-Configuration\-Manager.\-h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/**}
+00002 \textcolor{comment}{ * @author Yme-Jan Iedema <yj.iedema@gmail.com>}
+00003 \textcolor{comment}{ * @file ConfigurationManager.h}
+00004 \textcolor{comment}{ * @dependency DatabaseManager}
+00005 \textcolor{comment}{ * }
+00006 \textcolor{comment}{ * ConfigurationManager}
+00007 \textcolor{comment}{ * }
+00008 \textcolor{comment}{ * The configuration manager for getting configuration variables from}
+00009 \textcolor{comment}{ * and to the database}
+00010 \textcolor{comment}{ */}
+00011  
+00012  
+00013 \textcolor{preprocessor}{#ifndef DG2\_CONFIGURATIONMANAGER\_H}
+00014 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define DG2\_CONFIGURATIONMANAGER\_H}
+00015 \textcolor{preprocessor}{}
+00016 \textcolor{preprocessor}{#include "Includes.h"}
+00017 
+\hypertarget{ConfigurationManager_8h_source_l00018}{}\hyperlink{classConfigurationManager}{00018} \textcolor{keyword}{class }\hyperlink{classConfigurationManager}{ConfigurationManager} \{
+00019   \textcolor{keyword}{private}:
+00020     
+00021   \textcolor{keyword}{public}:
+00022     std::string \hyperlink{classConfigurationManager_ad3e85ee715420c432cd7545c6aaf8314}{getConfig}(std::string var);
+00023     \textcolor{keywordtype}{void} \hyperlink{classConfigurationManager_ad027e09a69a516f2ad020c9cbdf49f2f}{setConfig}(std::string var, std::string val);
+00024 \};
+00025 
+00026 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

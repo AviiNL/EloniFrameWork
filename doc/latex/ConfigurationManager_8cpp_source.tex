@@ -1,0 +1,28 @@
+\hypertarget{ConfigurationManager_8cpp}{\section{Configuration\-Manager.\-cpp}
+\label{ConfigurationManager_8cpp}\index{src/\-Configuration\-Manager.\-cpp@{src/\-Configuration\-Manager.\-cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{ConfigurationManager_8h}{ConfigurationManager.h}"}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{/**}
+00004 \textcolor{comment}{ * Get a configuration value from the database}
+00005 \textcolor{comment}{ * }
+00006 \textcolor{comment}{ * @returns string}
+00007 \textcolor{comment}{ */}
+\hypertarget{ConfigurationManager_8cpp_source_l00008}{}\hyperlink{classConfigurationManager_ad3e85ee715420c432cd7545c6aaf8314}{00008} std::string \hyperlink{classConfigurationManager_ad3e85ee715420c432cd7545c6aaf8314}{ConfigurationManager::getConfig}(std::string var) \{
+00009   std::string ret = \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"SELECT * FROM
+       `configuration` WHERE `var`='"} + var + \textcolor{stringliteral}{"'"})[0][\textcolor{stringliteral}{"val"}];
+00010   \textcolor{keywordflow}{return} ret;
+00011 \}
+00012 \textcolor{comment}{}
+00013 \textcolor{comment}{/**}
+00014 \textcolor{comment}{ * Store a value in the configuration database}
+00015 \textcolor{comment}{ */}
+\hypertarget{ConfigurationManager_8cpp_source_l00016}{}\hyperlink{classConfigurationManager_ad027e09a69a516f2ad020c9cbdf49f2f}{00016} \textcolor{keywordtype}{void} \hyperlink{classConfigurationManager_ad027e09a69a516f2ad020c9cbdf49f2f}{ConfigurationManager::setConfig}(std::string var, std::string val) \{
+00017   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"CREATE TABLE IF NOT EXISTS
+       configuration(var TEXT PRIMARY KEY, val TEXT)"});
+00018   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"INSERT OR REPLACE INTO `configuration`
+       (var, val) values ('"}+var+\textcolor{stringliteral}{"','"}+val+\textcolor{stringliteral}{"');"});
+00019 \}
+\end{DoxyCode}

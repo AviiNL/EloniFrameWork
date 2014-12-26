@@ -8,7 +8,7 @@ DatabaseManager::DatabaseManager() { }
  * @return int
  */
 int DatabaseManager::Open(std::string filename) {
-  dbFile = EloniFrameWork::Path() + "/" + filename;
+  dbFile = EloniFramework::Path() + "/" + filename;
   
   rc = sqlite3_open(dbFile.c_str(), &db);
   

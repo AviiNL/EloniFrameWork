@@ -1,0 +1,45 @@
+\hypertarget{SecurityManager_8h}{\section{Security\-Manager.\-h}
+\label{SecurityManager_8h}\index{inc/\-Security\-Manager.\-h@{inc/\-Security\-Manager.\-h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/**}
+00002 \textcolor{comment}{ * @author Yme-Jan Iedema <yj.iedema@gmail.com>}
+00003 \textcolor{comment}{ * @file SecurityManager.h}
+00004 \textcolor{comment}{ * @dependency DatabaseManager}
+00005 \textcolor{comment}{ * }
+00006 \textcolor{comment}{ * SecurityManager}
+00007 \textcolor{comment}{ * }
+00008 \textcolor{comment}{ * This class will handle everything related to security}
+00009 \textcolor{comment}{ * extracting users from the database and assigning roles}
+00010 \textcolor{comment}{ * Also allow sertain pages for specific roles}
+00011 \textcolor{comment}{ * }
+00012 \textcolor{comment}{ */}
+00013  
+00014 \textcolor{preprocessor}{#ifndef DG2\_SECURITYMANAGER\_H}
+00015 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define DG2\_SECURITYMANAGER\_H}
+00016 \textcolor{preprocessor}{}
+00017 \textcolor{preprocessor}{#include "Includes.h"}
+00018 
+00019 \textcolor{preprocessor}{#include <climits>}
+00020 \textcolor{preprocessor}{#include <crypt.h>}
+00021 \textcolor{preprocessor}{#include <bitset>}
+00022 
+\hypertarget{SecurityManager_8h_source_l00023}{}\hyperlink{classSecurityManager}{00023} \textcolor{keyword}{class }\hyperlink{classSecurityManager}{SecurityManager} \{
+00024   \textcolor{keyword}{private}:
+00025   \textcolor{keyword}{public}:
+00026     std::string \hyperlink{classSecurityManager_acc4ef8e7685038735e83e73556a5f510}{Encrypt}(std::string str);
+00027     std::map<std::string, int> \hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{getRoles}();
+00028     \textcolor{keywordtype}{bool} \hyperlink{classSecurityManager_a2950edc6463999ceca399d47023adddc}{hasRole}(std::string username, std::string role);
+00029     \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_a9ebf385f13f1893bb36647605677043d}{addRole}(std::string username, std::string role);
+00030     \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_a2d5b4923acbe73b0d21c5179deb7f17d}{removeRole}(std::string username, std::string role);
+00031     \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_ac9dc2c5a7667b95d9850ff22fc897213}{addUser}(std::string username, std::string password);
+00032     \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_ad616d32abdd366d50dfd01091d6a1f0c}{setUser}(std::string username, std::string var, std::string val);
+00033     \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_a61db3bbbb21105c441d2a7bc75fb41bd}{deleteUser}(std::string username);
+00034     \textcolor{keywordtype}{bool} \hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(std::string username);
+00035     std::vector<std::string> \hyperlink{classSecurityManager_a05f3c7fc498871277a00dffa092614c1}{getUsers}();
+00036     \textcolor{keywordtype}{bool} \hyperlink{classSecurityManager_ace68188567f645c18097b8791db64b41}{Authenticate}(std::string username, std::string password);
+00037 \};
+00038 
+00039 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

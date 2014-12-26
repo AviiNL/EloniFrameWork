@@ -1,0 +1,90 @@
+\hypertarget{classDatabaseManager}{\section{Database\-Manager Class Reference}
+\label{classDatabaseManager}\index{Database\-Manager@{Database\-Manager}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}{Open} (std\-::string filename)
+\begin{DoxyCompactList}\small\item\em Open the database. \end{DoxyCompactList}\item 
+\hypertarget{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}{void \hyperlink{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}{Close} ()}\label{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}
+
+\begin{DoxyCompactList}\small\item\em Close the database. \end{DoxyCompactList}\item 
+std\-::vector$<$ std\-::map\\*
+$<$ std\-::string, std\-::string $>$ $>$ \hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query} (std\-::string, std\-::string=\char`\"{}elonisas.\-db\char`\"{})
+\begin{DoxyCompactList}\small\item\em Queries the database and returns the data in a dictionary style result for easy access (all values are fetched as string) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{DatabaseManager_8h_source_l00020}{20} of file \hyperlink{DatabaseManager_8h_source}{Database\-Manager.\-h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}{\index{Database\-Manager@{Database\-Manager}!Open@{Open}}
+\index{Open@{Open}!DatabaseManager@{Database\-Manager}}
+\subsubsection[{Open}]{\setlength{\rightskip}{0pt plus 5cm}int Database\-Manager\-::\-Open (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}
+
+
+Open the database. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{DatabaseManager_8cpp_source_l00010}{10} of file \hyperlink{DatabaseManager_8cpp_source}{Database\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{\index{Database\-Manager@{Database\-Manager}!Query@{Query}}
+\index{Query@{Query}!DatabaseManager@{Database\-Manager}}
+\subsubsection[{Query}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::map$<$ std\-::string, std\-::string $>$ $>$ Database\-Manager\-::\-Query (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{query, }
+\item[{std\-::string}]{filename = {\ttfamily \char`\"{}elonisas.db\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}
+
+
+Queries the database and returns the data in a dictionary style result for easy access (all values are fetched as string) 
+
+eg\-: result\mbox{[}0\mbox{]}\mbox{[}\char`\"{}username\char`\"{}\mbox{]}
+
+return vector$<$map$<$string, string$>$$>$ 
+
+Definition at line \hyperlink{DatabaseManager_8cpp_source_l00038}{38} of file \hyperlink{DatabaseManager_8cpp_source}{Database\-Manager.\-cpp}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{DatabaseManager_8h}{Database\-Manager.\-h}\item 
+src/Database\-Manager.\-cpp\end{DoxyCompactItemize}
