@@ -14,7 +14,7 @@ C++ Framework for linux with sqlite3 database management
 - sqlite3
 
 ##### Compiler
-This library is created by the c++11 standards.
+This library is created using the c++11 standards.
 
 ### Installation
 
