@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 <<<<<<< HEAD
-PROJECT_NAME           = EloniframeWork
+PROJECT_NAME           = EloniFramework
 PROJECT_NUMBER         = 0.1a
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
