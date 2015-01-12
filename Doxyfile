@@ -4,7 +4,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = EloniFrameWork
+PROJECT_NAME           = EloniframeWork
 PROJECT_NUMBER         = 0.1a
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
