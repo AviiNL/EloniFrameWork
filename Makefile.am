@@ -13,9 +13,9 @@ AM_CPPFLAGS =-Wl,-rpath -Wl,LIBDIR -Wl,--whole-archive -O3 -fPIC -I/usr/local/in
 
 
 lib_LTLIBRARIES = libeloniframework.la
-libeloniframework_la_SOURCES = src/EloniFrameWork.cpp src/ConfigurationManager.cpp src/DatabaseManager.cpp src/SecurityManager.cpp src/ShellManager.cpp
+libeloniframework_la_SOURCES = src/EloniFramework.cpp src/ConfigurationManager.cpp src/DatabaseManager.cpp src/SecurityManager.cpp src/ShellManager.cpp
 libeloniframework_la_CFLAGS = -I$(top_srcdir)/inc
-include_HEADERS = inc/Includes.h inc/EloniFrameWork.h inc/ConfigurationManager.h inc/DatabaseManager.h inc/SecurityManager.h inc/ShellManager.h
+include_HEADERS = inc/Includes.h inc/EloniFramework.h inc/ConfigurationManager.h inc/DatabaseManager.h inc/SecurityManager.h inc/ShellManager.h
 
 #noinst_LIBRARIES = libeloniframework.a
 #libeloniframework_a_SOURCES = src/Application.cpp src/ConfigurationManager.cpp src/DatabaseManager.cpp src/SecurityManager.cpp src/ShellManager.cpp

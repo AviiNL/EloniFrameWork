@@ -1,0 +1,7 @@
+<map id="SecurityManager::isUser" name="SecurityManager::isUser">
+<area shape="rect" id="node2" href="$classEloniFramework.html#a803da824e33d75564d5a7ca77e66b0e4" title="Returns the instance of DatabaseManager. " alt="" coords="214,5,389,32"/>
+<area shape="rect" id="node3" href="$classDatabaseManager.html#adefb1bdb51d7b23d4b3a446a3f22ea26" title="Queries the database and returns the data in a dictionary style result for easy access (all values ar..." alt="" coords="218,56,385,83"/>
+<area shape="rect" id="node4" href="$classDatabaseManager.html#a37b1f9148ca1b698c73a98bece97cd35" title="Open the database. " alt="" coords="439,31,601,57"/>
+<area shape="rect" id="node6" href="$classDatabaseManager.html#a5232ac6d9271e2b3984042c306157bdb" title="Close the database. " alt="" coords="438,81,602,108"/>
+<area shape="rect" id="node5" href="$classEloniFramework.html#a97ba3c1e7eed84a52a572794c6f78eab" title="Returns the application directory. " alt="" coords="651,31,797,57"/>
+</map>

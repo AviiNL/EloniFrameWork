@@ -1,20 +1,20 @@
-#include "EloniFrameWork.h"
+#include "EloniFramework.h"
 
-ConfigurationManager* EloniFrameWork::_configuration = NULL;
-DatabaseManager* EloniFrameWork::_database = NULL;
-SecurityManager* EloniFrameWork::_security = NULL;
-ShellManager* EloniFrameWork::_shell = NULL;
+ConfigurationManager* EloniFramework::_configuration = NULL;
+DatabaseManager* EloniFramework::_database = NULL;
+SecurityManager* EloniFramework::_security = NULL;
+ShellManager* EloniFramework::_shell = NULL;
 
 /**
  * Returns the instance of ConfigurationManager
  * 
  * @return ConfigurationManager
  */
-ConfigurationManager *EloniFrameWork::Configuration() {
-  if(EloniFrameWork::_configuration == NULL)
-    EloniFrameWork::_configuration = new ConfigurationManager();
+ConfigurationManager *EloniFramework::Configuration() {
+  if(EloniFramework::_configuration == NULL)
+    EloniFramework::_configuration = new ConfigurationManager();
     
-  return EloniFrameWork::_configuration;
+  return EloniFramework::_configuration;
 }
 
 /**
@@ -22,11 +22,11 @@ ConfigurationManager *EloniFrameWork::Configuration() {
  * 
  * @return DatabaseManager
  */
-DatabaseManager *EloniFrameWork::Database() {
-  if(EloniFrameWork::_database == NULL)
-    EloniFrameWork::_database = new DatabaseManager();
+DatabaseManager *EloniFramework::Database() {
+  if(EloniFramework::_database == NULL)
+    EloniFramework::_database = new DatabaseManager();
     
-  return EloniFrameWork::_database;
+  return EloniFramework::_database;
 }
 
 /**
@@ -34,11 +34,11 @@ DatabaseManager *EloniFrameWork::Database() {
  * 
  * @return SecurityManager
  */
-SecurityManager *EloniFrameWork::Security() {
-  if(EloniFrameWork::_security == NULL)
-    EloniFrameWork::_security = new SecurityManager();
+SecurityManager *EloniFramework::Security() {
+  if(EloniFramework::_security == NULL)
+    EloniFramework::_security = new SecurityManager();
     
-  return EloniFrameWork::_security;
+  return EloniFramework::_security;
 }
 
 /**
@@ -46,11 +46,11 @@ SecurityManager *EloniFrameWork::Security() {
  * 
  * @return ShellManager
  */
-ShellManager *EloniFrameWork::Shell() {
-  if(EloniFrameWork::_shell == NULL)
-    EloniFrameWork::_shell = new ShellManager();
+ShellManager *EloniFramework::Shell() {
+  if(EloniFramework::_shell == NULL)
+    EloniFramework::_shell = new ShellManager();
     
-  return EloniFrameWork::_shell;
+  return EloniFramework::_shell;
 }
 
 /**
@@ -58,7 +58,7 @@ ShellManager *EloniFrameWork::Shell() {
  * 
  * @return string
  */
-std::string EloniFrameWork::Path() {
+std::string EloniFramework::Path() {
   char buff[1024];
   int len = readlink("/proc/self/exe", buff, sizeof(buff)-1);
   buff[len] = '\0';

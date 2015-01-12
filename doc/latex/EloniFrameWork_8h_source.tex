@@ -1,0 +1,43 @@
+\hypertarget{EloniFrameWork_8h}{\section{Eloni\-Frame\-Work.\-h}
+\label{EloniFrameWork_8h}\index{inc/\-Eloni\-Frame\-Work.\-h@{inc/\-Eloni\-Frame\-Work.\-h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/**}
+00002 \textcolor{comment}{ * @author Yme-Jan Iedema <yj.iedema@gmail.com>}
+00003 \textcolor{comment}{ * @file Application.h}
+00004 \textcolor{comment}{ * }
+00005 \textcolor{comment}{ * DrushGui}
+00006 \textcolor{comment}{ * }
+00007 \textcolor{comment}{ * Main entry point for DrushGui, this class initializes all Managers}
+00008 \textcolor{comment}{ * and makes them available via the Application() static function}
+00009 \textcolor{comment}{ */}
+00010 
+00011 \textcolor{preprocessor}{#ifndef DG2\_DRUSHGUI\_H}
+00012 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define DG2\_DRUSHGUI\_H}
+00013 \textcolor{preprocessor}{}
+00014 \textcolor{preprocessor}{#include "Includes.h"} \textcolor{comment}{// All the general stuff}
+00015 
+00016 \textcolor{keyword}{class }\hyperlink{classDatabaseManager}{DatabaseManager};
+00017 \textcolor{keyword}{class }\hyperlink{classConfigurationManager}{ConfigurationManager};
+00018 \textcolor{keyword}{class }\hyperlink{classSecurityManager}{SecurityManager};
+00019 \textcolor{keyword}{class }\hyperlink{classShellManager}{ShellManager};
+00020 
+\hypertarget{EloniFrameWork_8h_source_l00021}{}\hyperlink{classEloniFramework}{00021} \textcolor{keyword}{class }\hyperlink{classEloniFramework}{EloniFramework} \{
+00022   \textcolor{keyword}{private}:
+00023     \textcolor{keyword}{static} \hyperlink{classDatabaseManager}{DatabaseManager}       *\_database;
+00024     \textcolor{keyword}{static} \hyperlink{classConfigurationManager}{ConfigurationManager}  *\_configuration;
+00025     \textcolor{keyword}{static} \hyperlink{classSecurityManager}{SecurityManager}       *\_security;
+00026     \textcolor{keyword}{static} \hyperlink{classShellManager}{ShellManager}          *\_shell;
+00027     
+00028   \textcolor{keyword}{public}:
+00029     \textcolor{keyword}{static} \hyperlink{classDatabaseManager}{DatabaseManager}       *\hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{Database}();
+00030     \textcolor{keyword}{static} \hyperlink{classConfigurationManager}{ConfigurationManager}  *\hyperlink{classEloniFramework_a3ef2e10a4eae52e233931cff12aadb48}{Configuration}();
+00031     \textcolor{keyword}{static} \hyperlink{classSecurityManager}{SecurityManager}       *\hyperlink{classEloniFramework_a417d0368e8e814f717a2b210496f7db2}{Security}();
+00032     \textcolor{keyword}{static} \hyperlink{classShellManager}{ShellManager}          *\hyperlink{classEloniFramework_ac0bcb257424435f01d2da61a816db01a}{Shell}();
+00033     \textcolor{keyword}{static} std::string           \hyperlink{classEloniFramework_a97ba3c1e7eed84a52a572794c6f78eab}{Path}();
+00034     
+00035 \};
+00036 
+00037 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

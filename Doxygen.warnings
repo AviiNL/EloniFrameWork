@@ -1,0 +1,8 @@
+/home/ymejan/Development/EloniFramework/inc/EloniFrameWork.h:3: warning: the name `Application.h' supplied as the second argument in the \file statement is not an input file
+/home/ymejan/Development/EloniFramework/inc/DatabaseManager.h:20: warning: Compound DatabaseManager is not documented.
+/home/ymejan/Development/EloniFramework/inc/SecurityManager.h:23: warning: Compound SecurityManager is not documented.
+/home/ymejan/Development/EloniFramework/inc/EloniFrameWork.h:21: warning: Compound EloniFramework is not documented.
+/home/ymejan/Development/EloniFramework/inc/ShellManager.h:25: warning: Compound ShellManager is not documented.
+/home/ymejan/Development/EloniFramework/inc/ConfigurationManager.h:18: warning: Compound ConfigurationManager is not documented.
+/home/ymejan/Development/EloniFramework/inc/ConfigurationManager.h:3: warning: Found unknown command `\dependency'
+/home/ymejan/Development/EloniFramework/inc/SecurityManager.h:3: warning: Found unknown command `\dependency'

@@ -8,7 +8,7 @@
 #include <vector>
 #include <map>
 
-#include "EloniFrameWork.h"
+#include "EloniFramework.h"
 #include "ShellManager.h"
 #include "SecurityManager.h"
 #include "DatabaseManager.h"

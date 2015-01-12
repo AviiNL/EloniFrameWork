@@ -1,0 +1,155 @@
+\hypertarget{SecurityManager_8cpp}{\section{Security\-Manager.\-cpp}
+\label{SecurityManager_8cpp}\index{src/\-Security\-Manager.\-cpp@{src/\-Security\-Manager.\-cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{SecurityManager_8h}{SecurityManager.h}"}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{/**}
+00004 \textcolor{comment}{ * Encrypt a string in DG Standard encryption}
+00005 \textcolor{comment}{ * }
+00006 \textcolor{comment}{ * @returns string}
+00007 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00008}{}\hyperlink{classSecurityManager_acc4ef8e7685038735e83e73556a5f510}{00008} std::string \hyperlink{classSecurityManager_acc4ef8e7685038735e83e73556a5f510}{SecurityManager::Encrypt}(std::string str) \{
+00009   \textcolor{keywordflow}{return} crypt(str.c\_str(), \textcolor{stringliteral}{"$6$Eh1R3E/K2kD"});
+00010 \}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{/**}
+00013 \textcolor{comment}{ * Add a user}
+00014 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00015}{}\hyperlink{classSecurityManager_ac9dc2c5a7667b95d9850ff22fc897213}{00015} \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_ac9dc2c5a7667b95d9850ff22fc897213}{SecurityManager::addUser}(std::string username, std::string password) \{
+00016   \textcolor{keywordflow}{if}(this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username))
+00017     \textcolor{keywordflow}{return}; \textcolor{comment}{// user already exists}
+00018     
+00019   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"INSERT INTO `users`
+       (`username`,`password`,`email`,`role`) VALUES ('"} + username + \textcolor{stringliteral}{"','"} + password + \textcolor{stringliteral}{"','N/A','')"});
+00020 \}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{/**}
+00023 \textcolor{comment}{ * Remove a user}
+00024 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00025}{}\hyperlink{classSecurityManager_a61db3bbbb21105c441d2a7bc75fb41bd}{00025} \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_a61db3bbbb21105c441d2a7bc75fb41bd}{SecurityManager::deleteUser}(std::string username) \{
+00026   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username))
+00027     \textcolor{keywordflow}{return}; \textcolor{comment}{// user does not exists}
+00028     
+00029   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"DELETE FROM `users` WHERE `username`='"}+
+      username+\textcolor{stringliteral}{"'"});
+00030 \}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{/**}
+00033 \textcolor{comment}{ * Set user properties}
+00034 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00035}{}\hyperlink{classSecurityManager_ad616d32abdd366d50dfd01091d6a1f0c}{00035} \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_ad616d32abdd366d50dfd01091d6a1f0c}{SecurityManager::setUser}(std::string username, std::string var, std::string 
+      val) \{
+00036   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username))
+00037     \textcolor{keywordflow}{return}; \textcolor{comment}{// user does not exists}
+00038   
+00039   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"UPDATE `users` SET `"}+var+\textcolor{stringliteral}{"`='"}+val+\textcolor{stringliteral}{"'
+       WHERE `username`='"}+username+\textcolor{stringliteral}{"'"});
+00040 \}
+00041 \textcolor{comment}{}
+00042 \textcolor{comment}{/**}
+00043 \textcolor{comment}{ * Check if a user exists}
+00044 \textcolor{comment}{ * }
+00045 \textcolor{comment}{ * @return bool}
+00046 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00047}{}\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{00047} \textcolor{keywordtype}{bool} \hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{SecurityManager::isUser}(std::string username) \{
+00048   \textcolor{keyword}{auto} user = \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"SELECT `username` FROM
+       `users` WHERE `username`='"} + username + \textcolor{stringliteral}{"'"});
+00049   \textcolor{keywordflow}{if}(user.size() > 0)
+00050     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00051   
+00052   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00053 \}
+00054 \textcolor{comment}{}
+00055 \textcolor{comment}{/**}
+00056 \textcolor{comment}{ * Get all users from the database}
+00057 \textcolor{comment}{ * }
+00058 \textcolor{comment}{ * @return std::vector}
+00059 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00060}{}\hyperlink{classSecurityManager_a05f3c7fc498871277a00dffa092614c1}{00060} std::vector<std::string> \hyperlink{classSecurityManager_a05f3c7fc498871277a00dffa092614c1}{SecurityManager::getUsers}() \{
+00061   std::vector<std::string> \_users;
+00062   
+00063   \textcolor{keyword}{auto} users = \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"SELECT `username` FROM
+       `users`"});
+00064   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} user : users) \{
+00065     \_users.push\_back(user[\textcolor{stringliteral}{"username"}]);
+00066   \}
+00067 
+00068   \textcolor{keywordflow}{return} \_users;
+00069 \}
+00070 \textcolor{comment}{}
+00071 \textcolor{comment}{/**}
+00072 \textcolor{comment}{ * Get all roles from the database}
+00073 \textcolor{comment}{ * }
+00074 \textcolor{comment}{ * @return std::map<std::string, int>}
+00075 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00076}{}\hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{00076} std::map<std::string, int> \hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{SecurityManager::getRoles}() \{
+00077   \textcolor{keyword}{auto} roles = \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"SELECT * FROM `roles`"});
+00078   std::map<std::string, int> \_roles;
+00079   
+00080   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} role : roles) \{
+00081     \_roles.insert(std::pair<std::string, int>(role[\textcolor{stringliteral}{"name"}], (atoi(role[\textcolor{stringliteral}{"id"}].c\_str())-1)));
+00082   \}
+00083   
+00084   \textcolor{keywordflow}{return} \_roles;
+00085 \}
+00086 \textcolor{comment}{}
+00087 \textcolor{comment}{/**}
+00088 \textcolor{comment}{ * Check if a user has a specific role}
+00089 \textcolor{comment}{ * }
+00090 \textcolor{comment}{ * @return bool}
+00091 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00092}{}\hyperlink{classSecurityManager_a2950edc6463999ceca399d47023adddc}{00092} \textcolor{keywordtype}{bool} \hyperlink{classSecurityManager_a2950edc6463999ceca399d47023adddc}{SecurityManager::hasRole}(std::string username, std::string role) \{
+00093   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00094   \textcolor{keyword}{auto} user = \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"SELECT * FROM `users` WHERE
+       `username`='"} + username + \textcolor{stringliteral}{"'"})[0];
+00095   \textcolor{keyword}{auto} roles = this->\hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{getRoles}();
+00096   \textcolor{keywordtype}{int} userRole = atoi(user[\textcolor{stringliteral}{"role"}].c\_str());
+00097   \textcolor{keywordtype}{int} roleToCheck = roles[role];
+00098   std::bitset<32> user\_role\_bits(userRole);
+00099   \textcolor{keywordflow}{return} user\_role\_bits.test(roleToCheck);
+00100 \}
+00101 \textcolor{comment}{}
+00102 \textcolor{comment}{/**}
+00103 \textcolor{comment}{ * Assign a role to a user}
+00104 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00105}{}\hyperlink{classSecurityManager_a9ebf385f13f1893bb36647605677043d}{00105} \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_a9ebf385f13f1893bb36647605677043d}{SecurityManager::addRole}(std::string username, std::string role)\{
+00106   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username)) \textcolor{keywordflow}{return};
+00107   \textcolor{keywordflow}{if}(this->\hyperlink{classSecurityManager_a2950edc6463999ceca399d47023adddc}{hasRole}(username, role))
+00108     \textcolor{keywordflow}{return};
+00109   
+00110   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"UPDATE `users` SET `role`=`role`+'"} + 
+      std::to\_string(1 << (this->\hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{getRoles}()[role])) + \textcolor{stringliteral}{"' WHERE `username`='"} + username + \textcolor{stringliteral}{"'"});
+00111 \}
+00112 \textcolor{comment}{}
+00113 \textcolor{comment}{/**}
+00114 \textcolor{comment}{ * Remove a role from a user}
+00115 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00116}{}\hyperlink{classSecurityManager_a2d5b4923acbe73b0d21c5179deb7f17d}{00116} \textcolor{keywordtype}{void} \hyperlink{classSecurityManager_a2d5b4923acbe73b0d21c5179deb7f17d}{SecurityManager::removeRole}(std::string username, std::string role)\{
+00117   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username)) \textcolor{keywordflow}{return};
+00118   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_a2950edc6463999ceca399d47023adddc}{hasRole}(username, role))
+00119     \textcolor{keywordflow}{return};
+00120   
+00121   \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"UPDATE `users` SET `role`=`role`-'"} + 
+      std::to\_string(1 << (this->\hyperlink{classSecurityManager_afe3d50265be58ec179058feadd9902a6}{getRoles}()[role])) + \textcolor{stringliteral}{"' WHERE `username`='"} + username + \textcolor{stringliteral}{"'"});
+00122 \}
+00123 \textcolor{comment}{}
+00124 \textcolor{comment}{/**}
+00125 \textcolor{comment}{ * Authenticate a uer}
+00126 \textcolor{comment}{ * }
+00127 \textcolor{comment}{ * @return bool}
+00128 \textcolor{comment}{ */}
+\hypertarget{SecurityManager_8cpp_source_l00129}{}\hyperlink{classSecurityManager_ace68188567f645c18097b8791db64b41}{00129} \textcolor{keywordtype}{bool} \hyperlink{classSecurityManager_ace68188567f645c18097b8791db64b41}{SecurityManager::Authenticate}(std::string username, std::string password)
+       \{
+00130   \textcolor{keywordflow}{if}(!this->\hyperlink{classSecurityManager_abda859f83e39977a46ce993970a35f92}{isUser}(username)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00131   
+00132   \textcolor{keyword}{auto} user = \hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}()->\hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(\textcolor{stringliteral}{"SELECT * FROM `users` WHERE
+       `username`='"} + username + \textcolor{stringliteral}{"'"})[0];
+00133   \textcolor{keywordflow}{if}(user[\textcolor{stringliteral}{"password"}] == password)
+00134     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00135   
+00136   
+00137   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00138 \}
+\end{DoxyCode}

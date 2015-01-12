@@ -1,0 +1,40 @@
+\hypertarget{DatabaseManager_8h}{\section{Database\-Manager.\-h}
+\label{DatabaseManager_8h}\index{inc/\-Database\-Manager.\-h@{inc/\-Database\-Manager.\-h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*!}
+00002 \textcolor{comment}{ * @author Yme-Jan Iedema <yj.iedema@gmail.com>}
+00003 \textcolor{comment}{ * @file DatabaseManager.h}
+00004 \textcolor{comment}{ * }
+00005 \textcolor{comment}{ * DatabaseManager}
+00006 \textcolor{comment}{ * }
+00007 \textcolor{comment}{ * Wrapper for sqlite}
+00008 \textcolor{comment}{ * The Query function throws a segementation error when accessing}
+00009 \textcolor{comment}{ * tables or data that does not exit}
+00010 \textcolor{comment}{ */}
+00011 
+00012 \textcolor{preprocessor}{#ifndef DG2\_DATABASEMANAGER\_H}
+00013 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define DG2\_DATABASEMANAGER\_H}
+00014 \textcolor{preprocessor}{}
+00015 \textcolor{preprocessor}{#include "Includes.h"}
+00016 
+00017 \textcolor{preprocessor}{#include <boost/algorithm/string.hpp>}
+00018 \textcolor{preprocessor}{#include <sqlite3.h>}
+00019 
+\hypertarget{DatabaseManager_8h_source_l00020}{}\hyperlink{classDatabaseManager}{00020} \textcolor{keyword}{class }\hyperlink{classDatabaseManager}{DatabaseManager} \{
+00021   \textcolor{keyword}{private}:
+00022     sqlite3     *db;
+00023     \textcolor{keywordtype}{int}         rc;
+00024     std::string dbFile;
+00025     
+00026   \textcolor{keyword}{public}:
+00027     \hyperlink{classDatabaseManager}{DatabaseManager}();
+00028     \textcolor{keywordtype}{int}           \hyperlink{classDatabaseManager_a37b1f9148ca1b698c73a98bece97cd35}{Open}(std::string filename);
+00029     \textcolor{keywordtype}{void}          \hyperlink{classDatabaseManager_a5232ac6d9271e2b3984042c306157bdb}{Close}();
+00030     std::vector< std::map<std::string,std::string> > \hyperlink{classDatabaseManager_adefb1bdb51d7b23d4b3a446a3f22ea26}{Query}(std::string, std::string = \textcolor{stringliteral}{"elonisas.db"});
+00031     
+00032 \};
+00033 
+00034 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

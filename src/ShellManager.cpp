@@ -63,7 +63,7 @@ int ShellManager::setUser(int UserID) {
  */
 std::string ShellManager::setWorkingDirectory(std::string dir) {
   if (dir == "" || !fs::exists(dir)) {
-    dir = EloniFrameWork::Path();
+    dir = EloniFramework::Path();
   }
   
   if( fs::exists(dir) )

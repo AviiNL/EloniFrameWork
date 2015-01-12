@@ -1,0 +1,11 @@
+<map id="inc/ShellManager.h" name="inc/ShellManager.h">
+<area shape="rect" id="node2" href="$ShellManager_8cpp_source.html" title="src/ShellManager.cpp" alt="" coords="83,80,229,107"/>
+<area shape="rect" id="node3" href="$Includes_8h_source.html" title="inc/Includes.h" alt="" coords="253,80,355,107"/>
+<area shape="rect" id="node4" href="$ConfigurationManager_8h.html" title="inc/ConfigurationManager.h" alt="" coords="25,155,204,181"/>
+<area shape="rect" id="node6" href="$SecurityManager_8h.html" title="inc/SecurityManager.h" alt="" coords="229,155,379,181"/>
+<area shape="rect" id="node8" href="$DatabaseManager_8h.html" title="inc/DatabaseManager.h" alt="" coords="404,155,561,181"/>
+<area shape="rect" id="node10" href="$EloniFrameWork_8h_source.html" title="inc/EloniFrameWork.h" alt="" coords="586,155,733,181"/>
+<area shape="rect" id="node5" href="$ConfigurationManager_8cpp_source.html" title="src/ConfigurationManager.cpp" alt="" coords="5,229,197,256"/>
+<area shape="rect" id="node7" href="$SecurityManager_8cpp_source.html" title="src/SecurityManager.cpp" alt="" coords="222,229,385,256"/>
+<area shape="rect" id="node9" href="$DatabaseManager_8cpp_source.html" title="src/DatabaseManager.cpp" alt="" coords="411,229,581,256"/>
+</map>

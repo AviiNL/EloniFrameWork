@@ -18,7 +18,7 @@ class ConfigurationManager;
 class SecurityManager;
 class ShellManager;
 
-class EloniFrameWork {
+class EloniFramework {
   private:
     static DatabaseManager       *_database;
     static ConfigurationManager  *_configuration;

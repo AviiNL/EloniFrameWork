@@ -1,0 +1,9 @@
+<map id="SecurityManager::hasRole" name="SecurityManager::hasRole">
+<area shape="rect" id="node2" href="$classSecurityManager.html#abda859f83e39977a46ce993970a35f92" title="Check if a user exists. " alt="" coords="232,25,392,51"/>
+<area shape="rect" id="node3" href="$classEloniFramework.html#a803da824e33d75564d5a7ca77e66b0e4" title="Returns the instance of DatabaseManager. " alt="" coords="449,25,623,51"/>
+<area shape="rect" id="node4" href="$classDatabaseManager.html#adefb1bdb51d7b23d4b3a446a3f22ea26" title="Queries the database and returns the data in a dictionary style result for easy access (all values ar..." alt="" coords="453,75,619,102"/>
+<area shape="rect" id="node8" href="$classSecurityManager.html#afe3d50265be58ec179058feadd9902a6" title="Get all roles from the database. " alt="" coords="225,75,399,102"/>
+<area shape="rect" id="node5" href="$classDatabaseManager.html#a37b1f9148ca1b698c73a98bece97cd35" title="Open the database. " alt="" coords="673,50,836,77"/>
+<area shape="rect" id="node7" href="$classDatabaseManager.html#a5232ac6d9271e2b3984042c306157bdb" title="Close the database. " alt="" coords="673,101,837,127"/>
+<area shape="rect" id="node6" href="$classEloniFramework.html#a97ba3c1e7eed84a52a572794c6f78eab" title="Returns the application directory. " alt="" coords="885,50,1032,77"/>
+</map>

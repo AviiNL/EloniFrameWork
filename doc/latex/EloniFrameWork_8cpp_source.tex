@@ -1,0 +1,75 @@
+\hypertarget{EloniFrameWork_8cpp}{\section{Eloni\-Frame\-Work.\-cpp}
+\label{EloniFrameWork_8cpp}\index{src/\-Eloni\-Frame\-Work.\-cpp@{src/\-Eloni\-Frame\-Work.\-cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "EloniFramework.h"}
+00002 
+00003 \hyperlink{classConfigurationManager}{ConfigurationManager}* EloniFramework::\_configuration = NULL;
+00004 \hyperlink{classDatabaseManager}{DatabaseManager}* EloniFramework::\_database = NULL;
+00005 \hyperlink{classSecurityManager}{SecurityManager}* EloniFramework::\_security = NULL;
+00006 \hyperlink{classShellManager}{ShellManager}* EloniFramework::\_shell = NULL;
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{/**}
+00009 \textcolor{comment}{ * Returns the instance of ConfigurationManager}
+00010 \textcolor{comment}{ * }
+00011 \textcolor{comment}{ * @return ConfigurationManager}
+00012 \textcolor{comment}{ */}
+\hypertarget{EloniFrameWork_8cpp_source_l00013}{}\hyperlink{classEloniFramework_a3ef2e10a4eae52e233931cff12aadb48}{00013} \hyperlink{classConfigurationManager}{ConfigurationManager} *\hyperlink{classEloniFramework_a3ef2e10a4eae52e233931cff12aadb48}{EloniFramework::Configuration}() \{
+00014   \textcolor{keywordflow}{if}(EloniFramework::\_configuration == NULL)
+00015     EloniFramework::\_configuration = \textcolor{keyword}{new} \hyperlink{classConfigurationManager}{ConfigurationManager}();
+00016     
+00017   \textcolor{keywordflow}{return} EloniFramework::\_configuration;
+00018 \}
+00019 \textcolor{comment}{}
+00020 \textcolor{comment}{/**}
+00021 \textcolor{comment}{ * Returns the instance of DatabaseManager}
+00022 \textcolor{comment}{ * }
+00023 \textcolor{comment}{ * @return DatabaseManager}
+00024 \textcolor{comment}{ */}
+\hypertarget{EloniFrameWork_8cpp_source_l00025}{}\hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{00025} \hyperlink{classDatabaseManager}{DatabaseManager} *\hyperlink{classEloniFramework_a803da824e33d75564d5a7ca77e66b0e4}{EloniFramework::Database}() \{
+00026   \textcolor{keywordflow}{if}(EloniFramework::\_database == NULL)
+00027     EloniFramework::\_database = \textcolor{keyword}{new} \hyperlink{classDatabaseManager}{DatabaseManager}();
+00028     
+00029   \textcolor{keywordflow}{return} EloniFramework::\_database;
+00030 \}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{/**}
+00033 \textcolor{comment}{ * Returns the instance of SecurityManager}
+00034 \textcolor{comment}{ * }
+00035 \textcolor{comment}{ * @return SecurityManager}
+00036 \textcolor{comment}{ */}
+\hypertarget{EloniFrameWork_8cpp_source_l00037}{}\hyperlink{classEloniFramework_a417d0368e8e814f717a2b210496f7db2}{00037} \hyperlink{classSecurityManager}{SecurityManager} *\hyperlink{classEloniFramework_a417d0368e8e814f717a2b210496f7db2}{EloniFramework::Security}() \{
+00038   \textcolor{keywordflow}{if}(EloniFramework::\_security == NULL)
+00039     EloniFramework::\_security = \textcolor{keyword}{new} \hyperlink{classSecurityManager}{SecurityManager}();
+00040     
+00041   \textcolor{keywordflow}{return} EloniFramework::\_security;
+00042 \}
+00043 \textcolor{comment}{}
+00044 \textcolor{comment}{/**}
+00045 \textcolor{comment}{ * Returns the instance of ShellManager}
+00046 \textcolor{comment}{ * }
+00047 \textcolor{comment}{ * @return ShellManager}
+00048 \textcolor{comment}{ */}
+\hypertarget{EloniFrameWork_8cpp_source_l00049}{}\hyperlink{classEloniFramework_ac0bcb257424435f01d2da61a816db01a}{00049} \hyperlink{classShellManager}{ShellManager} *\hyperlink{classEloniFramework_ac0bcb257424435f01d2da61a816db01a}{EloniFramework::Shell}() \{
+00050   \textcolor{keywordflow}{if}(EloniFramework::\_shell == NULL)
+00051     EloniFramework::\_shell = \textcolor{keyword}{new} \hyperlink{classShellManager}{ShellManager}();
+00052     
+00053   \textcolor{keywordflow}{return} EloniFramework::\_shell;
+00054 \}
+00055 \textcolor{comment}{}
+00056 \textcolor{comment}{/**}
+00057 \textcolor{comment}{ * Returns the application directory}
+00058 \textcolor{comment}{ * }
+00059 \textcolor{comment}{ * @return string}
+00060 \textcolor{comment}{ */}
+\hypertarget{EloniFrameWork_8cpp_source_l00061}{}\hyperlink{classEloniFramework_a97ba3c1e7eed84a52a572794c6f78eab}{00061} std::string \hyperlink{classEloniFramework_a97ba3c1e7eed84a52a572794c6f78eab}{EloniFramework::Path}() \{
+00062   \textcolor{keywordtype}{char} buff[1024];
+00063   \textcolor{keywordtype}{int} len = readlink(\textcolor{stringliteral}{"/proc/self/exe"}, buff, \textcolor{keyword}{sizeof}(buff)-1);
+00064   buff[len] = \textcolor{charliteral}{'\(\backslash\)0'};
+00065   std::string path = buff;
+00066   std::string::size\_type i = path.find\_last\_of(\textcolor{stringliteral}{"/"});
+00067   \textcolor{keywordflow}{return} path.substr(0,i);
+00068 \}
+00069 
+\end{DoxyCode}
